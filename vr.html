@@ -6,6 +6,7 @@
     <title>Job Portal - VR Experience</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         body {
             font-family:'Montserrat',sans-serif;
@@ -13,21 +14,7 @@
             min-height: 100vh;
             padding-bottom: 40px;
         }
-        .navbar {
-            background: linear-gradient(90deg, #6366f1 0%, #a5b4fc 100%);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            margin-bottom: 32px;
-            padding-top: 12px;
-            padding-bottom: 12px;
-        }
-        .navbar .navbar-brand, .navbar .nav-link {
-            color: #fff !important;
-        }
-        .navbar .nav-link.active {
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        .hero, .jobs-hero, .companies-hero, .profile-hero, .chat-hero, .vr-hero {
+        .vr-hero {
             background: linear-gradient(120deg, #6366f1 0%, #a5b4fc 60%, #f8fafc 100%);
             color: #fff;
             border-radius: 24px;
@@ -35,100 +22,56 @@
             margin-bottom: 48px;
             box-shadow: 0 6px 32px rgba(99,102,241,0.10);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .hero-title, .jobs-hero h1, .companies-hero h1, .profile-hero h1, .chat-hero h1, .vr-hero h1 {
-            font-size: 2.7rem;
-            font-weight: 700;
-            margin-bottom: 24px;
+        .vr-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            opacity: 0.18;
+            z-index: 0;
         }
-        .vr-container {
-            max-width: 900px;
-            margin: auto;
-            background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);
-            border-radius: 20px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            padding: 36px 32px;
-            margin-bottom: 36px;
-            text-align: center;
-        }
+        .vr-hero .position-relative { z-index: 1; }
         .vr-iframe {
-            border-radius: 16px;
+            border-radius: 20px;
             border: none;
             width: 100%;
             height: 420px;
             box-shadow: 0 2px 16px rgba(99,102,241,0.10);
         }
-        .vr-cta {
-            margin-top: 30px;
-        }
-        .vr-cta .btn {
-            background: linear-gradient(90deg, #6366f1 0%, #a5b4fc 100%);
-            border: none;
-            font-weight: 600;
-            padding: 12px 32px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            transition: background 0.2s;
-        }
-        .vr-cta .btn:hover {
-            background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
-        }
-        .vr-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            justify-content: center;
-            margin: 40px 0 0 0;
-        }
-        .vr-feature-card {
+        .feature-card {
             background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            padding: 24px 18px;
-            min-width: 220px;
-            max-width: 260px;
-            flex: 1 1 220px;
-            text-align: left;
-            margin-bottom: 24px;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            transition: transform .2s;
         }
-        .vr-feature-card h5 {
-            font-weight: 700;
-            color: #6366f1;
-            margin-bottom: 10px;
+        .feature-card:hover {
+            transform: translateY(-6px) scale(1.03);
         }
-        .vr-feature-card p {
-            color: #475569;
-            font-size: 1rem;
-        }
-        .vr-options {
-            margin: 36px 0 0 0;
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .vr-options button {
+        .btn-primary {
             background: linear-gradient(90deg, #6366f1 0%, #a5b4fc 100%);
-            color: #fff;
             border: none;
-            border-radius: 30px;
-            padding: 10px 28px;
             font-weight: 600;
-            transition: background 0.2s;
+            border-radius: 30px;
         }
-        .vr-options button:hover {
+        .btn-primary:hover {
             background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
         }
-        .progress-bar {
-            background: linear-gradient(90deg, #6366f1 0%, #a5b4fc 100%);
+        @media (max-width: 992px) {
+            .vr-iframe { height: 300px; }
         }
         @media (max-width: 768px) {
             .vr-hero { padding: 40px 10px 30px 10px; }
-            .vr-container { padding: 18px 8px; }
-            .container, .container-fluid {
-                padding-left: 8px !important;
-                padding-right: 8px !important;
-            }
+            .vr-iframe { height: 200px; }
+        }
+        .vr-reply-box {
+            display: none;
+            padding: 20px 24px;
+            border-radius: 18px;
+            font-weight: 500;
+            transition: all 0.3s;
         }
     </style>
 </head>
@@ -151,43 +94,109 @@
         </div>
     </div>
 </nav>
-<div class="container py-5">
-    <div class="vr-hero">
-        <h1>Immersive VR Job Experience</h1>
-        <p>Step into a virtual workspace. Explore company environments, attend virtual interviews, and experience your future job in a whole new way.</p>
+<section class="vr-hero d-flex flex-column align-items-center justify-content-center">
+    <div class="position-relative text-center w-100">
+        <img src="https://img.icons8.com/ios-filled/100/6366f1/virtual-reality.png" alt="VR Icon" style="width:80px;height:80px;filter:drop-shadow(0 2px 8px #6366f1cc);">
+        <h1 class="fw-bold mt-3" style="font-size:2.7rem;">Immersive VR Job Experience</h1>
+        <p class="lead mb-0">Step into a virtual workspace. Explore, interact, and experience your future job in a whole new way.</p>
     </div>
-    <div class="vr-container">
-        <div class="vr-options">
-            <button onclick="alert('Launching Virtual Office Tour (Demo)')">Virtual Office Tour</button>
-            <button onclick="alert('Launching Simulated Interview (Demo)')">Simulated Interview</button>
-            <button onclick="alert('Launching Team Collaboration (Demo)')">Team Collaboration</button>
-            <button onclick="alert('Launching Avatar Customization (Demo)')">Avatar Customization</button>
-        </div>
-        <iframe class="vr-iframe mt-4" src="https://aframe.io/aframe/examples/showcase/helloworld/"></iframe>
-        <div class="vr-cta">
-            <a href="https://aframe.io/" target="_blank" class="btn btn-lg">Learn More About VR</a>
-        </div>
-        <div class="vr-features">
-            <div class="vr-feature-card">
-                <h5>Virtual Office Tours</h5>
-                <p>Walk through real company offices and get a feel for the workspace before you apply.</p>
-            </div>
-            <div class="vr-feature-card">
-                <h5>Simulated Interviews</h5>
-                <p>Practice interviews in a realistic, immersive environment to boost your confidence.</p>
-            </div>
-            <div class="vr-feature-card">
-                <h5>Team Collaboration</h5>
-                <p>Meet and interact with potential teammates in a virtual setting.</p>
-            </div>
-            <div class="vr-feature-card">
-                <h5>Personalized Avatars</h5>
-                <p>Customize your virtual presence for a more engaging experience.</p>
+</section>
+<section class="container py-5">
+    <div class="row g-5 align-items-center">
+        <div class="col-lg-5 mb-4 mb-lg-0 mx-auto">
+            <div class="card shadow-lg border-0 p-4" style="border-radius: 20px; background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);">
+                <h4 class="fw-bold mb-3" style="color:#6366f1;">Try VR Features</h4>
+                <div class="d-grid gap-3">
+                    <button class="btn btn-primary btn-lg" style="border-radius:30px;" onclick="showVRReply('office')">Virtual Office Tour</button>
+                    <button class="btn btn-primary btn-lg" style="border-radius:30px;" onclick="showVRReply('interview')">Simulated Interview</button>
+                    <button class="btn btn-primary btn-lg" style="border-radius:30px;" onclick="showVRReply('team')">Team Collaboration</button>
+                    <button class="btn btn-primary btn-lg" style="border-radius:30px;" onclick="showVRReply('avatar')">Avatar Customization</button>
+                </div>
+                <div id="vr-reply-box" class="alert alert-info mt-4" style="display:none;"></div>
+                <div class="vr-cta text-end mt-4">
+                    <a href="https://aframe.io/" target="_blank" class="btn btn-lg btn-primary w-100" style="border-radius:30px;">Learn More About VR</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="row mt-5 g-4 justify-content-center">
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow feature-card text-center p-4">
+                <i class="bi bi-building" style="font-size:2.5rem;color:#6366f1;margin-bottom:12px;"></i>
+                <h5 class="fw-bold mb-2" style="color:#6366f1;">Virtual Office Tours</h5>
+                <p class="mb-0">Walk through real company offices and get a feel for the workspace before you apply.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow feature-card text-center p-4">
+                <i class="bi bi-mic" style="font-size:2.5rem;color:#6366f1;margin-bottom:12px;"></i>
+                <h5 class="fw-bold mb-2" style="color:#6366f1;">Simulated Interviews</h5>
+                <p class="mb-0">Practice interviews in a realistic, immersive environment to boost your confidence.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow feature-card text-center p-4">
+                <i class="bi bi-people" style="font-size:2.5rem;color:#6366f1;margin-bottom:12px;"></i>
+                <h5 class="fw-bold mb-2" style="color:#6366f1;">Team Collaboration</h5>
+                <p class="mb-0">Meet and interact with potential teammates in a virtual setting.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow feature-card text-center p-4">
+                <i class="bi bi-person-circle" style="font-size:2.5rem;color:#6366f1;margin-bottom:12px;"></i>
+                <h5 class="fw-bold mb-2" style="color:#6366f1;">Personalized Avatars</h5>
+                <p class="mb-0">Customize your virtual presence for a more engaging experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
 <footer class="text-center py-4 mt-5" style="background:#f1f5f9; color:#64748b;">&copy; 2025 JobPortal. All rights reserved.</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function showVRReply(feature) {
+    let replyBox = document.getElementById('vr-reply-box');
+    if (!replyBox) {
+        replyBox = document.createElement('div');
+        replyBox.id = 'vr-reply-box';
+        replyBox.className = 'vr-reply-box mt-4';
+        document.querySelector('.card.shadow-lg').appendChild(replyBox);
+    }
+    let icon = '', message = '';
+    switch(feature) {
+        case 'office':
+            icon = '🏢';
+            message = 'Launching <b>Virtual Office Tour</b> (Demo):<br>Explore a virtual office environment!';
+            break;
+        case 'interview':
+            icon = '🎤';
+            message = 'Launching <b>Simulated Interview</b> (Demo):<br>Practice your interview skills in VR!';
+            break;
+        case 'team':
+            icon = '🤝';
+            message = 'Launching <b>Team Collaboration</b> (Demo):<br>Meet and collaborate with your future team!';
+            break;
+        case 'avatar':
+            icon = '🧑‍💻';
+            message = 'Launching <b>Avatar Customization</b> (Demo):<br>Personalize your virtual presence!';
+            break;
+        default:
+            icon = '🕶️';
+            message = 'Launching VR Feature (Demo)';
+    }
+    replyBox.innerHTML = `<div style="display:flex;align-items:center;gap:16px;">
+        <span style="font-size:2.2rem;">${icon}</span>
+        <span style="font-size:1.1rem;">${message}</span>
+    </div>`;
+    replyBox.style.display = 'block';
+    replyBox.style.background = 'linear-gradient(90deg, #6366f1 0%, #a5b4fc 100%)';
+    replyBox.style.color = '#fff';
+    replyBox.style.border = 'none';
+    replyBox.style.borderRadius = '18px';
+    replyBox.style.boxShadow = '0 4px 24px rgba(99,102,241,0.10)';
+    replyBox.style.padding = '20px 24px';
+    replyBox.style.fontWeight = '500';
+    replyBox.style.transition = 'all 0.3s';
+}
+</script>
 </body>
 </html>
