@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal - Companies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family:'Montserrat',sans-serif;
+            background: linear-gradient(135deg, #e0e7ef 0%, #f8fafc 40%, #a5b4fc 100%);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #6366f1 0%, #a5b4fc 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 32px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+        .navbar .navbar-brand, .navbar .nav-link {
+            color: #fff !important;
+        }
+        .navbar .nav-link.active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .hero, .jobs-hero, .companies-hero, .profile-hero, .chat-hero, .vr-hero {
+            background: linear-gradient(120deg, #6366f1 0%, #a5b4fc 60%, #f8fafc 100%);
+            color: #fff;
+            border-radius: 24px;
+            padding: 70px 40px 60px 40px;
+            margin-bottom: 48px;
+            box-shadow: 0 6px 32px rgba(99,102,241,0.10);
+            text-align: center;
+        }
+        .hero-title, .jobs-hero h1, .companies-hero h1, .profile-hero h1, .chat-hero h1, .vr-hero h1 {
+            font-size: 2.7rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .companies-hero p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+        .company-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);
+            margin-bottom: 36px;
+            padding: 36px 32px;
+        }
+        .company-card:hover {
+            transform: scale(1.03);
+        }
+        .company-card h5 { color: #6366f1; font-weight: 700; }
+        .company-card p { color: #475569; }
+        .badge { font-size: 0.95em; }
+        .btn-primary {
+            background: linear-gradient(90deg, #6366f1 0%, #a5b4fc 100%);
+            border: none;
+            font-weight: 600;
+            border-radius: 30px;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
+        }
+        .company-search {
+            background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(99,102,241,0.10);
+            padding: 28px 32px;
+            margin-bottom: 48px;
+        }
+        .accordion {
+            margin-bottom: 36px;
+        }
+        .accordion-button:not(.collapsed) {
+            color: #6366f1;
+            background-color: #e0e7ef;
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #6366f1 0%, #a5b4fc 100%);
+        }
+        .row.g-4, .row.g-3 {
+            margin-bottom: 32px;
+        }
+        .mb-4, .mb-5 {
+            margin-bottom: 2.5rem !important;
+        }
+        .mb-3 {
+            margin-bottom: 1.5rem !important;
+        }
+        .mt-3, .mt-4, .mt-5 {
+            margin-top: 2rem !important;
+        }
+        .w-100 {
+            margin-top: 16px;
+        }
+        .progress {
+            margin-bottom: 18px;
+        }
+        @media (max-width: 768px) {
+            .companies-hero { padding: 40px 10px 30px 10px; }
+            .company-card { padding: 18px 8px; }
+            .container, .container-fluid {
+                padding-left: 8px !important;
+                padding-right: 8px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">JobPortal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs</a></li>
+                <li class="nav-item"><a class="nav-link active" href="companies.html">Companies</a></li>
+                <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="chat.html">Chat</a></li>
+                <li class="nav-item"><a class="nav-link" href="vr.html">VR</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container py-5">
+    <div class="companies-hero mb-5">
+        <h1>Discover Top Companies</h1>
+        <p>Explore company cultures, benefits, and reviews. Find the perfect workplace for your career growth.</p>
+    </div>
+    <div class="company-search mb-4">
+        <form class="row g-3 align-items-end">
+            <div class="col-md-6">
+                <label for="company-search-input" class="form-label">Search Companies</label>
+                <input type="text" class="form-control" id="company-search-input" placeholder="e.g. Tech Innovators">
+            </div>
+            <div class="col-md-4">
+                <label for="industry" class="form-label">Industry</label>
+                <select class="form-select" id="industry">
+                    <option selected>All</option>
+                    <option>Technology</option>
+                    <option>Finance</option>
+                    <option>Healthcare</option>
+                    <option>Education</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100" type="button" onclick="searchCompanies()">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="accordion mb-4" id="companiesAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Tech Innovators Inc.
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#companiesAccordion">
+                <div class="accordion-body">
+                    <span class="badge bg-primary mb-2">4.8★</span>
+                    <p>Leading in AI and cloud solutions.</p>
+                    <p>Industry: Technology</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    DataWiz Solutions
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#companiesAccordion">
+                <div class="accordion-body">
+                    <span class="badge bg-success mb-2">4.6★</span>
+                    <p>Experts in data analytics and ML.</p>
+                    <p>Industry: Technology</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Visionary Apps
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#companiesAccordion">
+                <div class="accordion-body">
+                    <span class="badge bg-warning text-dark mb-2">4.7★</span>
+                    <p>Innovative mobile and web products.</p>
+                    <p>Industry: Technology</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="card company-card p-4">
+                <h5>Tech Innovators Inc.</h5>
+                <p>Leading in AI and cloud solutions. <span class="badge bg-primary">4.8★</span></p>
+                <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card company-card p-4">
+                <h5>DataWiz Solutions</h5>
+                <p>Experts in data analytics and ML. <span class="badge bg-success">4.6★</span></p>
+                <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card company-card p-4">
+                <h5>Visionary Apps</h5>
+                <p>Innovative mobile and web products. <span class="badge bg-warning text-dark">4.7★</span></p>
+                <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="text-center py-4 mt-5" style="background:#f1f5f9; color:#64748b;">&copy; 2025 JobPortal. All rights reserved.</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function searchCompanies() {
+    alert('This would search/filter companies based on the input. (Demo only)');
+}
+</script>
+</body>
+</html>
